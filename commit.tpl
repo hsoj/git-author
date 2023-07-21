@@ -1,0 +1,5 @@
+%type%: %messaage%
+
+###
+
+%tracker%: %issue%

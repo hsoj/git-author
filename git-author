@@ -1,0 +1,37 @@
+#!/usr/bin/env sh
+#
+# git-author
+# A Git extension providing helpers for generating commit messages.
+#
+
+BIN_NAME="git-author"
+SOURCE_DIR=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+
+export BIN_NAME
+export SOURCE_DIR
+
+usage() {
+cat <<- END
+    add
+    init
+    ls
+    rm
+END
+}
+
+COMMAND="$1"
+COMMAND_BIN="$SOURCE_DIR/$BIN_NAME-$COMMAND"
+
+
+if [ $# -lt 1 ] || [ ! -e "$COMMAND_BIN" ]; then
+    usage
+    exit 1
+fi
+
+shift
+$COMMAND_BIN "$@"
+
+# while test $# -gt 0; do
+#     case "$1" in
+#     esac
+# done
